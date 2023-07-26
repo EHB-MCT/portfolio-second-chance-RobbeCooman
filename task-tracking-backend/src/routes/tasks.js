@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
 // PUT (update) a task
 router.put('/:id', async (req, res) => {
   const taskId = req.params.id;
-  const { title, description, completed, deadline } = req.body;
+  const { title, description, deadline } = req.body;
 
   if (!title || !description) {
     return res.status(400).json({ error: 'Title and description are required' });
@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
   try {
     const [updatedTask] = await db('tasks')
       .where('id', taskId)
-      .update({ title, description, completed, deadline })
+      .update({ title, description, deadline })
       .returning('*');
 
     if (!updatedTask) {
@@ -66,6 +66,23 @@ router.delete('/:id', async (req, res) => {
     }
 
     res.json({ message: 'Task deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// GET a single task by ID
+router.get('/:id', async (req, res) => {
+  const taskId = req.params.id;
+
+  try {
+    const task = await db('tasks').where('id', taskId).first();
+
+    if (!task) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    res.json(task);
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }

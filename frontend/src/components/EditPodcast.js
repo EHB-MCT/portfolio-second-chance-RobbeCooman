@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 const EditPodcast = () => {
   const { podcastId } = useParams();
@@ -50,22 +50,26 @@ const EditPodcast = () => {
 
   return (
     <div className="edit-podcast">
-        <div className="edit-container">
-          <h1>Edit Podcast</h1>
-          <input
-            type="text"
-            placeholder="Title"
-            value={editedTitle}
-            onChange={(e) => setEditedTitle(e.target.value)}
-          />
-          <textarea
-            placeholder="Description"
-            value={editedDescription}
-            onChange={(e) => setEditedDescription(e.target.value)}
-          />
-          <button onClick={handleEditPodcast}>Save Changes</button>
-        </div>
-
+      <div className="edit-container">
+        <h1>Edit Podcast</h1>
+        <input
+          type="text"
+          placeholder="Title"
+          value={editedTitle}
+          onChange={(e) => setEditedTitle(e.target.value)}
+        />
+        <textarea
+          placeholder="Description"
+          value={editedDescription}
+          onChange={(e) => setEditedDescription(e.target.value)}
+        />
+        <button className="save-btn" onClick={handleEditPodcast}>
+          Save Changes
+        </button>
+      </div>
+      <Link to={`/`}>
+              <button className="back-btn">Back to podcasts</button>
+      </Link>
     </div>
   );
 };

@@ -62,40 +62,42 @@ const Podcasts = () => {
 
   return (
     <div className="podcasts-list">
-      <h1>Podcasts</h1>
-      <div className="add-podcast-form">
-        <h2>Add New Podcast</h2>
-        <input
-          type="text"
-          placeholder="Title"
-          value={newPodcastTitle}
-          onChange={(e) => setNewPodcastTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Description"
-          value={newPodcastDescription}
-          onChange={(e) => setNewPodcastDescription(e.target.value)}
-        />
-        <button onClick={handleAddPodcast}>Add Podcast</button>
-      </div>
+    <h1>Podcasts</h1>
+    <div className="add-podcast-form">
+      <h2>Add New Podcast</h2>
+      <input
+        type="text"
+        placeholder="Title"
+        value={newPodcastTitle}
+        onChange={(e) => setNewPodcastTitle(e.target.value)}
+      />
+      <textarea
+        placeholder="Description"
+        value={newPodcastDescription}
+        onChange={(e) => setNewPodcastDescription(e.target.value)}
+      />
+      <button className="add-btn" onClick={handleAddPodcast}>
+        Add Podcast
+      </button>
+    </div>
      
-        <ul>
-          {podcasts.map((podcast) => (
-            <li key={podcast.id}>
-              <h3>{podcast.title}</h3>
-              <p>{podcast.description}</p>
-              <button
-                className="delete-btn"
-                onClick={() => handleDeletePodcast(podcast.id)}
-              >
-                 Delete Podcast
-              </button>
-              <Link to={`/edit-podcast/${podcast.id}`}>
-                <button className="edit-btn">Edit Podcast</button>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <ul className="podcast-items">
+        {podcasts.map((podcast) => (
+          <li key={podcast.id} className="podcast-item">
+            <h3>{podcast.title}</h3>
+            <p>{podcast.description}</p>
+            <button
+              className="delete-btn"
+              onClick={() => handleDeletePodcast(podcast.id)}
+            >
+              Delete Podcast
+            </button>
+            <Link to={`/edit-podcast/${podcast.id}`}>
+              <button className="edit-btn">Edit Podcast</button>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

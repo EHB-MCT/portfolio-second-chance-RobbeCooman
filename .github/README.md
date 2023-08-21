@@ -31,6 +31,8 @@ The Podcast Manager provides an intuitive way for users to manage their podcasts
   - Node.js
   - Express.js
   - PostgreSQL database
+  - Knex.js
+  - Nodemon.js
 - Frontend:
   - React
   - React Router
@@ -41,6 +43,7 @@ The Podcast Manager provides an intuitive way for users to manage their podcasts
 
 ### Prerequisites
 - Docker
+- PostgreSQL
 
 ### Installation
 1. Clone the repository.

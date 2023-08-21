@@ -19,6 +19,8 @@ services:
       - PG_CONNECTION_STRING=postgresql://postgres:robbe@db:5432/dev5
     volumes:
       - ./Backend:/app/Backend
+    depends_on:
+      - db
 
   db:
     image: postgres:latest
@@ -31,6 +33,7 @@ services:
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
 
 volumes:
   postgres_data:

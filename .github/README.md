@@ -73,3 +73,14 @@ See the [Changelog](CHANGELOG.md) for information about the latest releases.
 
 ## License
 This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license
+
+# Sources
+- [Node.js](https://nodejs.org/)
+- [Express.js](https://expressjs.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Knex.js](http://knexjs.org/)
+- [Classroom GitHub](https://classroom.github.com/)

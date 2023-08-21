@@ -23,6 +23,11 @@ const EditPodcast = () => {
       );
   });
 
+
+  /**
+   * Handles editing the podcast.
+   * @returns {void}
+   */
   const handleEditPodcast = () => {
     if (!editedTitle || !editedDescription) {
       alert('Please provide both title and description.');

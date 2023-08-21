@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// GET all podcasts
+/**
+ * @returns {Array} List of podcast objects
+ */
 router.get('/', async (req, res) => {
   try {
     const podcasts = await db('podcasts').select('*');
@@ -12,7 +14,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET a podcast by ID
+/**
+ * @param {string} id - The ID of the podcast
+ * @returns {Object} The podcast object
+ */
 router.get('/:id', async (req, res) => {
   const podcastId = req.params.id;
 
@@ -27,7 +32,11 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST a new podcast
+/**
+ * @param {string} title - Title of the podcast
+ * @param {string} description - Description of the podcast
+ * @returns {Object} The newly created podcast object
+ */
 router.post('/', async (req, res) => {
   const { title, description } = req.body;
   if (!title || !description) {
@@ -44,47 +53,53 @@ router.post('/', async (req, res) => {
   }
 });
 
-
-// PUT (update) a podcast
+/**
+ * @param {string} id - The ID of the podcast
+ * @param {string} title - New title of the podcast
+ * @param {string} description - New description of the podcast
+ * @returns {Object} The updated podcast object
+ */
 router.put('/:id', async (req, res) => {
-    const podcastId = req.params.id;
-    const { title, description } = req.body;
-    if (!title || !description) {
-      return res.status(400).json({ error: 'Title and description are required' });
+  const podcastId = req.params.id;
+  const { title, description } = req.body;
+  if (!title || !description) {
+    return res.status(400).json({ error: 'Title and description are required' });
+  }
+
+  try {
+    const [updatedPodcast] = await db('podcasts')
+      .where('id', podcastId)
+      .update({ title, description })
+      .returning('*');
+
+    if (!updatedPodcast) {
+      return res.status(404).json({ error: 'Podcast not found' });
     }
-  
-    try {
-      const [updatedPodcast] = await db('podcasts')
-        .where('id', podcastId)
-        .update({ title, description })
-        .returning('*');
-  
-      if (!updatedPodcast) {
-        return res.status(404).json({ error: 'Podcast not found' });
-      }
-  
-      res.json(updatedPodcast);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
-  
-// DELETE a podcast
+
+    res.json(updatedPodcast);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+/**
+ * @param {string} id - The ID of the podcast
+ * @returns {Object} A success message
+ */
 router.delete('/:id', async (req, res) => {
-    const podcastId = req.params.id;
-  
-    try {
-      const deletedPodcast = await db('podcasts').where('id', podcastId).del();
-  
-      if (!deletedPodcast) {
-        return res.status(404).json({ error: 'Podcast not found' });
-      }
-  
-      res.json({ message: 'Podcast deleted successfully' });
-    } catch (error) {
-      res.status(500).json({ error: 'Internal server error' });
+  const podcastId = req.params.id;
+
+  try {
+    const deletedPodcast = await db('podcasts').where('id', podcastId).del();
+
+    if (!deletedPodcast) {
+      return res.status(404).json({ error: 'Podcast not found' });
     }
-  });
-  
-  
+
+    res.json({ message: 'Podcast deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 module.exports = router;

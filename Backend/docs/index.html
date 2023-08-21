@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podcast Manager API Documentation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Podcast Manager API Documentation</h1>
+
+  <h2>GET All Podcasts</h2>
+  <p>Get a list of all podcasts.</p>
+  <code>GET /api/podcasts</code>
+  <p><strong>Returns:</strong> An array of podcast objects.</p>
+  <pre>
+    [
+      {
+        "id": 1,
+        "title": "Sample Podcast",
+        "description": "This is a sample podcast."
+      },
+      {
+        "id": 2,
+        "title": "Another Podcast",
+        "description": "Another example podcast."
+      }
+      // ...
+    ]
+  </pre>
+
+  <h2>GET Single Podcast by ID</h2>
+  <p>Get details of a single podcast.</p>
+  <code>GET /api/podcasts/:id</code>
+  <p><strong>Returns:</strong> The podcast object matching the provided ID.</p>
+  <pre>
+    {
+      "id": 1,
+      "title": "Sample Podcast",
+      "description": "This is a sample podcast."
+    }
+  </pre>
+
+  <h2>POST New Podcast</h2>
+  <p>Create a new podcast.</p>
+  <code>POST /api/podcasts</code>
+  <p><strong>Body:</strong></p>
+  <pre>
+    {
+      "title": "New Podcast",
+      "description": "Description of the new podcast."
+    }
+  </pre>
+  <p><strong>Returns:</strong> The newly created podcast object.</p>
+  <pre>
+    {
+      "id": 3,
+      "title": "New Podcast",
+      "description": "Description of the new podcast."
+    }
+  </pre>
+
+  <h2>PUT (Update) Podcast by ID</h2>
+  <p>Edit details of a podcast.</p>
+  <code>PUT /api/podcasts/:id</code>
+  <p><strong>Body:</strong></p>
+  <pre>
+    {
+      "title": "Updated Podcast",
+      "description": "Updated description of the podcast."
+    }
+  </pre>
+  <p><strong>Returns:</strong> The updated podcast object.</p>
+  <pre>
+    {
+      "id": 1,
+      "title": "Updated Podcast",
+      "description": "Updated description of the podcast."
+    }
+  </pre>
+
+  <h2>DELETE Podcast by ID</h2>
+  <p>Delete a single podcast.</p>
+  <code>DELETE /api/podcasts/:id</code>
+  <p><strong>Returns:</strong> A message indicating successful deletion.</p>
+  <pre>
+    {
+      "message": "Podcast deleted successfully"
+    }
+  </pre>
+</body>
+</html>

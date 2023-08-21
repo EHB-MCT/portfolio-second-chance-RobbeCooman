@@ -82,7 +82,7 @@ Please adhere to our [Code of Conduct](CODE_OF_CONDUCT.md) while participating i
 See the [Changelog](CHANGELOG.md) for information about the latest releases.
 
 ## License
-This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license
+This project is licensed under the [MIT](LICENSE) license
 
 # Sources
 - [Node.js](https://nodejs.org/)

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "migrate": "knex --knexfile db/knexfile.js migrate:latest",
+    "migrate:start": "npm run migrate && npm start" 
   },
   "keywords": [],
   "author": "",

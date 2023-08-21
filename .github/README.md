@@ -30,7 +30,7 @@ The Podcast Manager provides an intuitive way for users to manage their podcasts
 - Backend:
   - Node.js
   - Express.js
-  - PostgreSQL database (via the db library)
+  - PostgreSQL database
 - Frontend:
   - React
   - React Router
@@ -40,16 +40,12 @@ The Podcast Manager provides an intuitive way for users to manage their podcasts
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- PostgreSQL database
+- Docker
 
 ### Installation
-(1. Clone the repository.
-2. Navigate to the backend directory and run `npm install` to install backend dependencies.
-3. Set up your PostgreSQL database and configure the connection in the backend.
-4. Run the backend server using `npm start`.
-5. Navigate to the frontend directory and run `npm install` to install frontend dependencies.
-6. Run the frontend development server using `npm start`.)
+1. Clone the repository.
+2. Navigate to the root directory and execute the following command to start the frontend, backend, and database using Docker Compose: `docker-compose up`
+
 
 ## Usage
 1. Access the Podcast Manager by visiting http://localhost:3000 in your web browser.

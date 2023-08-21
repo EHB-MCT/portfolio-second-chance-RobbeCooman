@@ -44,7 +44,14 @@ The Podcast Manager provides an intuitive way for users to manage their podcasts
 
 ### Installation
 1. Clone the repository.
-2. Navigate to the root directory and execute the following command to start the frontend, backend, and database using Docker Compose: `docker-compose up --build`
+2. Create a file named `.env` in the root directory of the project and add the following environment variables:
+- `POSTGRES_USER=username`
+- `POSTGRES_PASSWORD=password`
+- `POSTGRES_DB=database`
+
+Replace username, password, database with your actual database details.
+
+3. Navigate to the root directory and execute the following command to start the frontend, backend, and database using Docker Compose: `docker-compose up --build`
 
 
 ## Usage
